@@ -33,23 +33,6 @@ MongoDB: NoSQL database for efficient data storage and management.
 # Authentication:
 JSON Web Token (JWT): Secure user authentication and authorization.
 
-# Folder Structure: 
-├── frontend(client)     # Frontend with React and Redux
-│   └── src
-│       ├── components   # Reusable UI components
-│       ├── redux        # Redux Toolkit slices and store
-|       ├── images       # Static images used in the frontend
-│       ├── App.js       # Main app component
-|        └── index.js     # Entry point for the React application
-├── constants         # Folder for storing app constants        
-│   └── itemsData.js  # File containing items/product data
-├── config           # Configuration files (e.g., DB, JWT secret)
-├── middleware       # Middleware for handling authentication, error handling, etc.
-├── models           # MongoDB models (User, Product, etc.)
-├── routes           # API routes
-└── app.js           # Entry point for the backend server
-└── README.md        # Project documentation
-
 # Performance Improvements
 Lazy Loading: Dynamically loaded components as needed, significantly reducing initial page load times.
 
