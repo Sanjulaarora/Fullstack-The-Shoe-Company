@@ -31,7 +31,7 @@ An advanced, responsive e-commerce platform built with React and Tailwind CSS, d
 - **MongoDB**: NoSQL database for efficient data storage and management.
 
 ## Authentication:
-JSON Web Token (JWT): Secure user authentication and authorization.
+- **JSON Web Token (JWT)**: Secure user authentication and authorization.
 
 ## Performance Improvements
 - **Lazy Loading**: Dynamically loaded components as needed, significantly reducing initial page load times.
@@ -43,7 +43,7 @@ JSON Web Token (JWT): Secure user authentication and authorization.
 
 - **Order Management**: Features for managing user orders and tracking.
 
-Admin Panel: Tools for product and user management by admins.
+- **Admin Panel**: Tools for product and user management by admins.
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
