@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-const CartPage = React.lazy(() => import('./CartPage'));
+const CartPage = React.lazy(() => import('../components/CartPage'));
 
 const Cart = () => {
   

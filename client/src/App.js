@@ -1,14 +1,14 @@
 import { lazy, Suspense } from 'react';
-import Header from './homepage/Header';
-import Footer from './homepage/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import {Switch, Route} from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 
-const HomePage = lazy(() => import('./homepage/HomePage'));
-const Collections = lazy(() => import('./collections/Collections'));
-const Cart = lazy(() => import('./cart/Cart'));
-const SignIn = lazy(() => import('./signup-signin/SignIn'));
-const SignUp = lazy(() => import('./signup-signin/SignUp'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const Collections = lazy(() => import('./pages/Collections'));
+const Cart = lazy(() => import('./pages/Cart'));
+const SignIn = lazy(() => import('./pages/SignIn'));
+const SignUp = lazy(() => import('./pages/SignUp'));
 
 function App() {
   return(

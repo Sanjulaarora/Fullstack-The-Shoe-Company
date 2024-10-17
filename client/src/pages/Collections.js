@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
-import Search from './Search';
-import Recommended from './Recommended';
+import Search from '../components/Search';
+import Recommended from '../components/Recommended';
 
-const Products = React.lazy(() => import('./Products'));
+const Products = React.lazy(() => import('../components/Products'));
 
 const Collections = () => {
   return (
