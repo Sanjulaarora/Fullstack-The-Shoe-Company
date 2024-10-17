@@ -39,7 +39,7 @@ const Header = () => {
     });
     } else {
     console.log("data valid");
-    toast.success("Your are Signed Out", {
+    toast.success("Your are Logged Out 🔐", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,

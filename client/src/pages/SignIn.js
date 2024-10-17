@@ -50,7 +50,7 @@ const SignIn = () => {
         theme: "dark",
         });
     } else {
-      toast.success("SignIn Successfull !", {
+      toast.success("You are Logged In 🔓!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
