@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Feed from './Feed';
 import SideBar from './SideBar';
 import { useSelector } from 'react-redux';
+import AppContext from '../context/AppContext';
 
-const Products = ({handleChange, searchResult}) => {
+const Products = () => {
+  const {handleChange, searchResult} = useContext(AppContext);
   const { isError, isLoading } = useSelector((state) => state.products);
   const items = searchResult;
   

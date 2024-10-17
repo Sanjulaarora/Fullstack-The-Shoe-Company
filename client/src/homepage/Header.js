@@ -67,20 +67,21 @@ const Header = () => {
             <button className="media450:mr-4 hover:underline hover:scale-110">Login</button>
           </Link>
         }
+        { 
+          user &&
+          <button className="media450:mr-4 hover:underline hover:scale-110" onClick={userSignOut}>Logout</button>
+        }
         <Link to='/collections'>
           <button className="mr-2 media450:mr-4 hover:underline hover:scale-110">Collections</button>
         </Link> 
         {
           user &&
-          <>
-            <Link to='/cart'>
-              <button className="flex mr-3 bg-slate-700 border-2 border-solid border-white rounded-lg w-6 media450:w-8 lg:w-12 p-[2px] media450:p-1 lg:p-[6px] text-[7px] media450:text-[10px] media830:text-xs hover:scale-110">
-                <FaCartShopping className="text-md media450:text-xl mt-[1px] media450:mt-0 mr-[2px]"/> 
-                {cart.length}
-              </button> 
-            </Link> 
-            <button className="hover:underline hover:scale-110" onClick={userSignOut}>Logout</button>
-          </>
+          <Link to='/cart'>
+            <button className="flex mr-3 bg-slate-700 border-2 border-solid border-white rounded-lg w-6 media450:w-8 lg:w-12 p-[2px] media450:p-1 lg:p-[6px] text-[7px] media450:text-[10px] media830:text-xs hover:scale-110">
+              <FaCartShopping className="text-md media450:text-xl mt-[1px] media450:mt-0 mr-[2px]"/> 
+              {cart.length}
+            </button> 
+          </Link> 
         }
       </div>
     </header>

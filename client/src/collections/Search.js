@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
-const Search = ({search, setSearch}) => {
+const Search = () => {
+  const {search, setSearch} = useContext(AppContext);
 
   return (
     <section id="search-bar" className="bg-black border-t-2 border-[#efefef] pt-36 pb-4 px-6 md:px-32 max-w-[1440px] mx-auto">
