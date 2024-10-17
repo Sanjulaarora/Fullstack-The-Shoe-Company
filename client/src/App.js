@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Header from './homepage/Header';
 import Footer from './homepage/Footer';
 import {Switch, Route} from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
 
 const HomePage = lazy(() => import('./homepage/HomePage'));
 const Collections = lazy(() => import('./collections/Collections'));
@@ -12,6 +13,7 @@ const SignUp = lazy(() => import('./signup-signin/SignUp'));
 function App() {
   return(
     <div className="m-0 p-0 box-border scroll-smooth bg-black text-white">
+      <AppProvider>
         <Header />
         <Switch>
           <Suspense fallback={<div>Loading...</div>}>
@@ -23,6 +25,7 @@ function App() {
           </Suspense>
         </Switch>
         <Footer />
+      </AppProvider>   
     </div>
   );
 }

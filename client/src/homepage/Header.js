@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img1 from '../images/shoe-company-logo.png';
-import { FaCartShopping, FaRightFromBracket } from 'react-icons/fa6';
+import { FaCartShopping } from 'react-icons/fa6';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import AppContext from '../context/AppContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const { cart } = useSelector((state) => state.allCart);
+  const { user, setUser } = useContext(AppContext);
   const history = useHistory();
 
   const userSignOut = async() => {
@@ -47,6 +49,7 @@ const Header = () => {
       progress: undefined,
       theme: "dark",
     });
+    setUser(null);
     history.push("/");
     }
   };
@@ -58,22 +61,27 @@ const Header = () => {
         <p className="text-[10px] media830:text-sm -mt-5 media830:-mt-8">The Shoe Company</p>
       </div>
       <div className="flex text-[12px] lg:text-2xl font-bold">
-        <Link to='/sign-in'>
-          <button className="media450:mr-4 hover:underline hover:scale-110">Login</button>
-        </Link>
+        {
+          !user && 
+          <Link to='/sign-in'>
+            <button className="media450:mr-4 hover:underline hover:scale-110">Login</button>
+          </Link>
+        }
         <Link to='/collections'>
           <button className="mr-2 media450:mr-4 hover:underline hover:scale-110">Collections</button>
         </Link> 
-        <Link to='/cart'>
-          <button className="flex mr-3 bg-slate-700 border-2 border-solid border-white rounded-lg w-6 media450:w-8 lg:w-12 p-[2px] media450:p-1 lg:p-[6px] text-[7px] media450:text-[10px] media830:text-xs hover:scale-110">
-            <FaCartShopping className="text-md media450:text-xl mt-[1px] media450:mt-0 mr-[2px]"/> 
-            {cart.length}
-          </button> 
-        </Link> 
         {
-
+          user &&
+          <>
+            <Link to='/cart'>
+              <button className="flex mr-3 bg-slate-700 border-2 border-solid border-white rounded-lg w-6 media450:w-8 lg:w-12 p-[2px] media450:p-1 lg:p-[6px] text-[7px] media450:text-[10px] media830:text-xs hover:scale-110">
+                <FaCartShopping className="text-md media450:text-xl mt-[1px] media450:mt-0 mr-[2px]"/> 
+                {cart.length}
+              </button> 
+            </Link> 
+            <button className="hover:underline hover:scale-110" onClick={userSignOut}>Logout</button>
+          </>
         }
-        <button className="hover:underline hover:scale-110" onClick={userSignOut}><FaRightFromBracket /></button>
       </div>
     </header>
   )

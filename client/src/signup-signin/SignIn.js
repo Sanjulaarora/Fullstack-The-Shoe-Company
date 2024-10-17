@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,6 +9,7 @@ const SignIn = () => {
     email:"",
     password:""
   });
+  const { setUser } = useContext(AppContext);
   const history = useHistory();
 
   const addSignInData = (e) => {
@@ -59,6 +61,7 @@ const SignIn = () => {
         theme: "dark",
         });
       setSignInData({...signInData, email:"", password:""});
+      setUser(true);
       history.push("/collections");
     }
   }

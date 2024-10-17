@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCartPlus, FaCartShopping, FaStar } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../features/cartSlice';
+import AppContext from '../context/AppContext';
 
 const Card = ({ item }) => {
   const {cart} = useSelector((state) => state.allCart);
+  const { user } = useContext(AppContext);
   const dispatch = useDispatch();
 
   const star= <FaStar className="text-amber-400 text-xs media450:text-base" />;
@@ -24,8 +26,9 @@ const Card = ({ item }) => {
             <del>{item.prevPrice}</del> {item.newPrice}
           </div>
           <div className="pt-[2px] media450:pt-1 hover:scale-125 flex">
-            {
-              cart.some((p) =>p.id === item.id) ? (
+            { user &&
+              cart.some((p) => p.id === item.id) ?
+              (
                 <FaCartPlus role="button"  
                   onClick = {() => dispatch(removeFromCart(item))}
                   className="w-3 media450:w-5"
