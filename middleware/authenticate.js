@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const Users = require("../models/usersSchema");
 const secretKey = process.env.KEY;
 
-const authenticate = async(req, res, next)=>{
+const authenticate = async(req, res, next) => {
     try {
         const token = req.cookies.Shoecompany;
         const verifyToken = jwt.verify(token, secretKey);

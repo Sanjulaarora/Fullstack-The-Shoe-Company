@@ -25,7 +25,7 @@ const Header = () => {
     const data = await res.json();
     console.log(data);
 
-    if(res.status !== 201) {
+    if(res.status !== 200) {
     console.log("error");
     toast.error("Something went Wrong!", {
       position: "top-right",

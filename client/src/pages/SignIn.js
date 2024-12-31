@@ -37,7 +37,7 @@ const SignIn = () => {
     });
 
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     if(res.status === 400 || !data) {
       toast.error("Something went Wrong!", {
         position: "top-right",

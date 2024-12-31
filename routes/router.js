@@ -23,16 +23,16 @@ router.post("/postUsers", async(req, res) => {
     const {name, number, email, password, passwordAgain} = req.body;
 
     if(!name || !number || !email || !password || !passwordAgain) {
-        res.status(422).json({error:"fill all the data"});
+        res.status(422).json({error:"Please fill all the data"});
     };
 
     try{
         const preuser = await Users.findOne({email:email});
 
         if(preuser) {
-            res.status(422).json({error:"this user already exists"})
+            res.status(422).json({error:"This user already exists"})
         } else if(password !== passwordAgain) {
-            res.status(422).json({error:"password and password again do not match"})
+            res.status(422).json({error:"Password and Password Again do not match."})
         } else {
             const finalUser = new Users({
                 name, number, email, password, passwordAgain
@@ -99,17 +99,19 @@ router.get("/validuser", authenticate, async (req, res) => {
 //User SignOut
 router.get("/sign-out", authenticate, async(req, res) => {
     try {
-        req.rootUser.tokens = req.rootUser.tokens.filter((currEle) => {
-            return currEle.token !== req.token
-        });
+        const token = req.token;
 
-        res.clearCookie("Shoecompany");
+        req.rootUser.tokens = req.rootUser.tokens.filter((currEle) => currEle.token !== token);
 
-        req.rootUser.save();
-        res.status(201).json(req.rootUser.tokens);
+        await req.rootUser.save();
+
+        res.clearCookie("Shoecompany", { path: "/" });
+
+        res.status(200).json({message: "User signed out successfully"});
         console.log("User SignOut");
     } catch (error) {
-        console.log("Error for User SignOut");
+        console.log("Error for User SignOut", error.message);
+        res.status(500).json({error: "Sign-out failed"});
     }
 });
 
